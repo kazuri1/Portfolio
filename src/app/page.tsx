@@ -9,7 +9,7 @@ import {
   Text,
 } from "pulseui-base";
 import { useBreakpoint } from "pulseui-base";
-
+import "pulseui-base/styles";
 export default function Home() {
   const { isMobile, isTablet, isDesktop, breakpoint } = useBreakpoint();
 
@@ -36,13 +36,13 @@ export default function Home() {
   };
 
   return (
-    <Stack gap="10" sx={{ minHeight: "100vh", backgroundColor: "white" }}>
+    <Stack gap="0" sx={{ minHeight: "100vh", backgroundColor: "white" }}>
       {/* Responsive Navigation */}
       <Grid sx={{ width: "100%" }}>
         <GridCol span={12}>
           <div className="geist-mono-nav">
             <SimpleTopNav
-              brandName="Vignesh Vishnumoorthy"
+              brandName="VIGNESH VISHNUMOORTHY"
               brandTitle="PRODUCT DESIGNER + ENGINEER"
               items={[
                 { id: "work", label: "WORK", active: true },
@@ -54,6 +54,9 @@ export default function Home() {
                 paddingLeft: getNavigationPadding(),
                 paddingRight: getNavigationPadding(),
                 backgroundColor: "white",
+                minHeight: "80px",
+                paddingTop: "var(--spacing-lg)",
+                paddingBottom: "var(--spacing-lg)",
                 ...(isMobile && {
                   flexDirection: "column",
                   gap: "var(--spacing-md)",
@@ -64,92 +67,56 @@ export default function Home() {
         </GridCol>
       </Grid>
 
-      {/* Responsive Main Content */}
-      <Stack gap="0" sx={{ flex: 1, backgroundColor: "white" }}>
+      {/* Hero Section */}
+      <Stack
+        gap="0"
+        sx={{ flex: 1, backgroundColor: "white", position: "relative" }}
+      >
         <Container
           size="lg"
           sx={{
             padding: getContainerPadding(),
             backgroundColor: "white",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            width: "100%",
+            alignItems: "center",
+            minHeight: "calc(100vh - 120px)",
+            textAlign: "center",
           }}
         >
-          {/* Hero Section */}
+          {/* Hero Content */}
           <Stack
             gap="xl"
-            sx={{ textAlign: "center", marginBottom: "var(--spacing-xxl)" }}
+            sx={{
+              maxWidth: "800px",
+              margin: "0 auto",
+            }}
           >
-            <Text
-              as="h1"
-              variant="xxl"
-              sx={{
-                marginBottom: "var(--spacing-lg)",
-                ...(isMobile && {
-                  fontSize: "var(--font-size-2xl)",
-                }),
+            {/* Main Heading */}
+            <div
+              className="hero-heading"
+              style={{
+                fontSize: isMobile ? "2rem" : "3.5rem",
               }}
             >
-              Welcome to My Portfolio
-            </Text>
-            <Text
-              variant="lg"
-              color="secondary"
-              sx={{
-                maxWidth: "600px",
-                margin: "0 auto",
-              }}
-            >
-              This is a clean portfolio page using Pulse UI components with
-              responsive design.
-            </Text>
+              <div>I'm Vignesh and I turn ideas into</div>
+              <div>
+                structured, scalable products — through{" "}
+                <span style={{ whiteSpace: "nowrap" }}>
+                  <span className="underlined-text">design</span>{" "}
+                  <span className="underlined-text">code</span> and{" "}
+                  <span className="underlined-text">clarity</span>
+                </span>
+              </div>
+              <div>
+                Currently building Pulse UI, an open-source system for scalable
+                UI. Focused on design, developer velocity, and the future of
+                intelligent interfaces.
+              </div>
+            </div>
           </Stack>
-
-          {/* Responsive Grid using Pulse UI Grid System */}
-          <Grid gutter="lg" sx={{ marginTop: "var(--spacing-xxl)" }}>
-            {/* Grid Items */}
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <GridCol key={item} span={getGridColumns()}>
-                <Stack
-                  gap="md"
-                  data-interactive
-                  sx={{
-                    padding: "var(--spacing-lg)",
-                    backgroundColor: "white",
-                    borderRadius: "var(--radius-md)",
-                    border: "1px solid var(--color-border-primary)",
-                    height: "100%",
-                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                    "&:hover": {
-                      transform: "translateY(-4px)",
-                      boxShadow: "var(--shadow-lg)",
-                    },
-                  }}
-                >
-                  <Text
-                    as="h3"
-                    variant="xl"
-                    sx={{
-                      ...(isMobile && {
-                        fontSize: "var(--font-size-lg)",
-                      }),
-                    }}
-                  >
-                    Project {item}
-                  </Text>
-                  <Text
-                    color="secondary"
-                    sx={{
-                      ...(isMobile && {
-                        fontSize: "var(--font-size-sm)",
-                      }),
-                    }}
-                  >
-                    This is a sample project description that showcases the
-                    responsive grid layout.
-                  </Text>
-                </Stack>
-              </GridCol>
-            ))}
-          </Grid>
         </Container>
       </Stack>
     </Stack>

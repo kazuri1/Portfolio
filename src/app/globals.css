@@ -3,7 +3,7 @@
   --foreground: #171717;
 
   /* Pulse UI CSS Variables */
-  --color-text-primary: #171717;
+  --color-text-primary: #292929;
   --color-text-secondary: #666666;
   --color-border-primary: #e5e5e5;
   --spacing-xs: 4px;
@@ -13,10 +13,13 @@
   --spacing-xl: 32px;
   --spacing-xxl: 48px;
   --font-size-sm: 14px;
-  --font-size-lg: 18px;
-  --font-size-2xl: 24px;
+  --font-size-lg: 16px;
+  --font-size-2xl: 16px;
   --radius-md: 8px;
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+  /* Font Variables */
+  --font-tertiary: var(--font-domine), serif;
 }
 
 html,
@@ -30,7 +33,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-tertiary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -45,8 +48,22 @@ a {
   text-decoration: none;
 }
 
-.geist-mono-nav,
-.geist-mono-nav * {
+/* Override Pulse UI navigation fonts with Geist */
+.geist-mono-nav [data-brand],
+.geist-mono-nav [data-brand-name],
+.geist-mono-nav [data-brand-title],
+.geist-mono-nav [data-nav],
+.geist-mono-nav [data-nav] * {
+  font-family: var(--font-geist-mono) !important;
+  letter-spacing: 0 !important;
+  line-height: 24px !important;
+}
+
+/* Ensure all navigation elements use Geist font */
+.geist-mono-nav button,
+.geist-mono-nav a,
+.geist-mono-nav span,
+.geist-mono-nav div {
   font-family: var(--font-geist-mono) !important;
   letter-spacing: 0 !important;
   line-height: 24px !important;
@@ -65,16 +82,54 @@ a {
 [data-brand-name] {
   color: var(--color-text-primary) !important;
   text-align: center !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
 }
 
 [data-brand-title] {
   color: var(--color-text-secondary) !important;
   text-align: center !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
 }
 
 [data-nav] {
   display: flex !important;
   gap: var(--spacing-md) !important;
+}
+
+/* Specific font size overrides for brand name and title */
+.geist-mono-nav [data-brand-name],
+.geist-mono-nav [data-brand-title],
+[data-brand-name],
+[data-brand-title],
+.geist-mono-nav *[data-brand-name],
+.geist-mono-nav *[data-brand-title],
+*[data-brand-name],
+*[data-brand-title] {
+  font-size: 16px !important;
+}
+
+/* Comprehensive font size overrides for brand name and title */
+.geist-mono-nav [data-brand-name],
+.geist-mono-nav [data-brand-title],
+[data-brand-name],
+[data-brand-title],
+.geist-mono-nav *[data-brand-name],
+.geist-mono-nav *[data-brand-title],
+*[data-brand-name],
+*[data-brand-title],
+.geist-mono-nav div[data-brand-name],
+.geist-mono-nav div[data-brand-title],
+.geist-mono-nav span[data-brand-name],
+.geist-mono-nav span[data-brand-title],
+.geist-mono-nav p[data-brand-name],
+.geist-mono-nav p[data-brand-title] {
+  font-size: 16px !important;
 }
 
 /* Mobile Responsive Styles */
@@ -85,12 +140,11 @@ a {
     gap: var(--spacing-xs) !important;
   }
 
-  [data-brand-name] {
-    font-size: var(--font-size-lg) !important;
-  }
-
+  .geist-mono-nav [data-brand-name],
+  .geist-mono-nav [data-brand-title],
+  [data-brand-name],
   [data-brand-title] {
-    font-size: var(--font-size-sm) !important;
+    font-size: 16px !important;
   }
 
   [data-nav] {
@@ -120,4 +174,90 @@ header,
 nav {
   display: block;
   visibility: visible;
+}
+
+/* Geist Font Overrides for Navigation */
+.geist-mono-nav,
+.geist-mono-nav *,
+.geist-mono-nav [data-brand],
+.geist-mono-nav [data-brand-name],
+.geist-mono-nav [data-brand-title],
+.geist-mono-nav [data-nav],
+.geist-mono-nav [data-nav] *,
+.geist-mono-nav button,
+.geist-mono-nav a,
+.geist-mono-nav span,
+.geist-mono-nav div,
+.geist-mono-nav p,
+.geist-mono-nav h1,
+.geist-mono-nav h2,
+.geist-mono-nav h3,
+.geist-mono-nav h4,
+.geist-mono-nav h5,
+.geist-mono-nav h6,
+.geist-mono-nav [class*="pulseui"],
+.geist-mono-nav [class*="PulseUI"],
+.geist-mono-nav [class*="nav"],
+.geist-mono-nav [class*="Nav"] {
+  font-family: var(--font-geist-mono) !important;
+  letter-spacing: 0 !important;
+  line-height: 24px !important;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-heading {
+  font-family: var(--font-tertiary);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #2c2c2c;
+  margin-bottom: var(--spacing-xl);
+}
+
+.hero-heading > div {
+  margin-bottom: 0.5rem;
+}
+
+.hero-heading > div:last-child {
+  margin-bottom: 0;
+  font-family: var(--font-geist-sans);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #495057;
+  margin-top: 1rem;
+}
+
+.hero-description {
+  font-family: var(--font-geist-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #495057;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Underlined text styles */
+.underlined-text {
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-color: #1737b7;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 4px;
+  white-space: nowrap;
+}
+
+/* Ensure the design-code-clarity group stays together */
+.hero-heading .underlined-text {
+  display: inline;
+  white-space: nowrap;
 }
