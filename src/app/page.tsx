@@ -24,7 +24,7 @@ export default function Home() {
   const getContainerPadding = () => {
     if (isMobile) return "var(--spacing-md)";
     if (isTablet) return "var(--spacing-lg)";
-    if (isDesktop) return "calc(var(--spacing-lg)";
+    if (isDesktop) return "calc(var(--spacing-lg) * 2)";
     return "var(--spacing-xl)";
   };
 
@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <Stack gap="10" sx={{ minHeight: "100vh" }}>
+    <Stack gap="10" sx={{ minHeight: "100vh", backgroundColor: "white" }}>
       {/* Responsive Navigation */}
       <Grid sx={{ width: "100%" }}>
         <GridCol span={12}>
@@ -53,46 +53,11 @@ export default function Home() {
               sx={{
                 paddingLeft: getNavigationPadding(),
                 paddingRight: getNavigationPadding(),
+                backgroundColor: "white",
                 ...(isMobile && {
                   flexDirection: "column",
                   gap: "var(--spacing-md)",
                 }),
-                "& [data-brand]": {
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "var(--spacing-sm)",
-                  whiteSpace: "nowrap",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  ...(isMobile && {
-                    flexDirection: "column",
-                    textAlign: "center",
-                    gap: "var(--spacing-xs)",
-                  }),
-                },
-                "& [data-brand-name]": {
-                  color: "var(--color-text-primary) !important",
-                  textAlign: "center",
-                  ...(isMobile && {
-                    fontSize: "var(--font-size-lg)",
-                  }),
-                },
-                "& [data-brand-title]": {
-                  color: "var(--color-text-secondary) !important",
-                  textAlign: "center",
-                  ...(isMobile && {
-                    fontSize: "var(--font-size-sm)",
-                  }),
-                },
-                "& [data-nav]": {
-                  display: "flex",
-                  gap: "var(--spacing-md)",
-                  ...(isMobile && {
-                    gap: "var(--spacing-sm)",
-                    flexWrap: "wrap",
-                    justifyContent: "center",
-                  }),
-                },
               }}
             />
           </div>
@@ -100,11 +65,12 @@ export default function Home() {
       </Grid>
 
       {/* Responsive Main Content */}
-      <Stack gap="0" sx={{ flex: 1 }}>
+      <Stack gap="0" sx={{ flex: 1, backgroundColor: "white" }}>
         <Container
           size="lg"
           sx={{
             padding: getContainerPadding(),
+            backgroundColor: "white",
           }}
         >
           {/* Hero Section */}
@@ -144,9 +110,10 @@ export default function Home() {
               <GridCol key={item} span={getGridColumns()}>
                 <Stack
                   gap="md"
+                  data-interactive
                   sx={{
                     padding: "var(--spacing-lg)",
-                    backgroundColor: "surface",
+                    backgroundColor: "white",
                     borderRadius: "var(--radius-md)",
                     border: "1px solid var(--color-border-primary)",
                     height: "100%",
